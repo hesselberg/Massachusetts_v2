@@ -1,17 +1,10 @@
-<script type="text/javascript" src="<{$theme_url}>/js/scripts.min.js"></script>
-    <div id="site" class="">
+<body class="subpage shippingpage">
+	<script type="text/javascript" src="js/scripts.min.js"></script>
+	<div id="site" class="">
 
-        <header id="sitehead">
+		<{include file="_include_checkout-header.html"}>
 
-            <div class="container"><div class="row">
-
-                <div class="col-xs-12" id="logo-container"><a href="/" id="logo"><img src="<{$theme_url}>/img/logo.png" id="logo-img"></a></div>
-
-            </div></div><!--/.container .row-->
-
-        </header><!--/#sitehead-->
-
-        <section id="sitecontent">
+		<section id="sitecontent">
 
 			<section id="checkout-content">
 				<div class="container"><div class="row">
@@ -36,9 +29,8 @@
 										var module = $("#shipping_module").show();
 									}
 								}
-
 							}
-
+							
 							// Loader
 							$("input.shipping").ready(check_module).change(check_module);
 						});
@@ -60,18 +52,17 @@
 
 
 					<form action="" method="post" id="shippingformular">
-					<br>
+						<br>
 
 
-					<{assign var="shippings" value=$webshop->getShippings()}>
-					<{section name="i" loop=$shippings}>
-						<div class="line" style="display : none;">
+						<{assign var="shippings" value=$webshop->getShippings()}>
+						<{section name="i" loop=$shippings}>
+						<div class="line" style="">
 							<input class="shipping" type="radio" module="<{$shippings[i]->getModule()|escape}>" value="<{$shippings[i]->getShippingId()}>" name="shipping_id" id="shipping<{$shippings[i]->getShippingId()}>" <{if $session_del.shipping_id == $shippings[i]->getShippingId()}>checked="checked"<{/if}>/>
 							<label for="shipping<{$shippings[i]->getShippingId()}>"><{$shippings[i]->getName()|escape}> <{$shippings[i]->getCost()|number_format:2:",":"."}> <{$webshop->getCurrency()}></label><br/>
 						</div>
-					<{/section}>
-                <{* viser kun shops, hvis landet er Danmark (id 1431) *}>
-                <{if $session_del.country_id == 1431}>
+						<{/section}>
+
 						<{if $shops}>
 						<div class="clear" >
 							<br>
@@ -88,9 +79,8 @@
 							</label>
 						</div>
 						<{else}>
-							<p>ingen pakkeshops</p>
+						<p>ingen pakkeshops</p>
 						<{/if}>
-					<{/if}>
 
 						<div class="clear"></div>
 						<br>
@@ -106,9 +96,9 @@
 
 		</section><!--/#sitecontent-->
 
-        <footer id="sitefoot">
+		<footer id="sitefoot">
 
-        </footer><!--/#sitefoot-->
+		</footer><!--/#sitefoot-->
 
 
-    </div><!--/#site-->
+	</div><!--/#site-->
